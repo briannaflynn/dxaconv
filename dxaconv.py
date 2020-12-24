@@ -55,7 +55,7 @@ def dxaconv_single(dcm_file:str, output_destination):
 # This function converts dcm by directory, specified in "img_type" parameter (jpg or png)
 # takes the path to the directory with images, path to output destination, and the image file type as parameters
 
-# Use only if you have a directory with only .dcm files, or pass the files through the dcm_only function first to check
+# Use only if you have a directory with only .dcm files, or pass the files through the ext_only function first to check
 
 def dxaconv_dir(dcm_folder_path, img_output_path, img_type='.jpg'):
 	images_path = os.listdir(dcm_folder_path)
@@ -69,7 +69,7 @@ def dxaconv_dir(dcm_folder_path, img_output_path, img_type='.jpg'):
 def dxaconv_dirlist(directory_list:list, output_destination:str):
 	files = []
 	for d in directory_list:
-		fnames = dcm_only(d)
+		fnames = ext_only(d)
 		for f in fnames:
 			files.append(os.path.join(abs_dir(d), f))
 	for f in files:
