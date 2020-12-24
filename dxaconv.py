@@ -74,9 +74,3 @@ def dxaconv_dirlist(directory_list:list, output_destination:str):
 			files.append(os.path.join(abs_dir(d), f))
 	for f in files:
 		dcm2jpg_conv(f, output_destination)
-
-
-
-
-		
-	
