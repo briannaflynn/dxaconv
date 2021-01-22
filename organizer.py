@@ -34,6 +34,8 @@ def get_anatomy_extension(bodypart:str=None):
 	return extension
     		
 
+## Organize the dicom files by the part of the body imaged
+
 def organize_by_anatomy(dir_path:str, bodypart:str):
 	
 	file_list = ext_only(dir_path, extension)
@@ -41,5 +43,7 @@ def organize_by_anatomy(dir_path:str, bodypart:str):
 	with open(txtName, 'w') as f:
 		for item in file_list:
 			f.write("%s\n" % item)
+			
+	## fill a text file with the names of the files organized by anatomy
 			
 			
