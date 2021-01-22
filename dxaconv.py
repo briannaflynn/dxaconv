@@ -74,3 +74,48 @@ def dxaconv_dirlist(directory_list:list, output_destination:str):
 			files.append(os.path.join(abs_dir(d), f))
 	for f in files:
 		dcm2jpg_conv(f, output_destination)
+		
+# take dcm file and convert most useful metadata information into a nested dictionary
+# nested dict includes information on the type of image, the 
+def advanced_metadata_tools(full_path_dcm):
+	ds = dicom.read_file(full_path_dcm)
+	
+	# Image Info
+	exam_type = ds.StudyDescription
+	img_type = ds.SeriesDescription
+	img_dict = {"Exam_Type": exam_type, "Image_Type": img_type}
+	
+	# Patient Info
+	age = ds.PatientAge
+	ID = ds.PatientID
+	orientation = ds.PatientOrientation
+	sex = ds.PatientSex
+	size = ds.PatientSize
+	weight = ds.PatientWeight
+	protocol = ds.ProtocolName
+	acquisition = ds.AcquisitionDate
+	ethnicity = ds.EthnicGroup
+	
+	patient_dict = {'Patient_Age': age, 'Patient_Protocol': protocol, 'Patient_Sex': sex, 'Ethnic_Group': ethnicity, 'Patient_Orientation': orientation, 'Patient_Size': size, 'Patient_Weight': weight, 'PatientID': ID, 'Acquisition_Date': acquisition}
+	
+	# Pixel Info
+	pixdata = ds.PixelData ## pixel data is not human readable, can use to plot image in other functions
+	represent = ds.PixelRepresentation
+	samp = ds.SamplesPerPixel
+	rows = ds.Rows
+	columns = ds.Columns
+	phot = ds.PhotometricInterpretation
+	
+	pixel_dict = {'Samples_per_Pixel': samp, 'Pixel_Rows': rows, 'Pixel_Columns': columns, 'Photomeric_Interpretation': phot, 'Pixel_Representation': represent}
+	
+	# Bit Info
+	allocated = ds.BitsAllocated
+	stored = ds.BitsStored
+	highbit = ds.HighBit
+	
+	bit_dict = {'Bits_Allocated': allocated, 'Bits_Stored': stored, 'High_Bit': highbit}
+	
+	# Nested Dict with all Information
+	dicom_super = {'Image':img_dict, 'Patient':patient_dict, 'Pixel':pixel_dict, 'Bit':bit_dict}
+	
+	return dicom_super
