@@ -38,11 +38,12 @@ def get_anatomy_extension(bodypart:str=None):
 
 def organize_by_anatomy(dir_path:str, bodypart:str):
 	
-	file_list = ext_only(dir_path, extension)
+	file_list = ext_only(dir_path, extension) ## get extension from get_anatomy_extension function
 	txtName = bodypart + ".txt"
 	with open(txtName, 'w') as f:
 		for item in file_list:
 			f.write("%s\n" % item)
+	return file_list
 			
 	## fill a text file with the names of the files organized by anatomy
 			
