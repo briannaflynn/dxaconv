@@ -41,6 +41,7 @@ def metadata_parser(dcm_file:str, output_destination):
 	y = "_metadata.txt"
 	fname = f + y
 	metadata = print(ds, file=open(os.path.join(output_destination, fname), "w"))
+	
 	return metadata
 
 # This function converts individual dcm files to jpg format
@@ -51,6 +52,7 @@ def dxaconv_single(dcm_file:str, output_destination):
 	f = Path(dcm_file).name
 	img = f.replace('.dcm', '.jpg')
 	cv2.imwrite(os.path.join(output_destination, img), pixel_array_np)
+	print("File ", img, "converted to JPG")
 	
 # This function converts dcm by directory, specified in "img_type" parameter (jpg or png)
 # takes the path to the directory with images, path to output destination, and the image file type as parameters
@@ -66,6 +68,7 @@ def dxaconv_dir(dcm_folder_path, img_output_path, img_type='.jpg'):
 		cv2.imwrite(os.path.join(img_output_path, image), pixel_array_numpy)
 
 # given a list of directories, convert contents output to destination
+
 def dxaconv_dirlist(directory_list:list, output_destination:str):
 	files = []
 	for d in directory_list:
@@ -73,7 +76,7 @@ def dxaconv_dirlist(directory_list:list, output_destination:str):
 		for f in fnames:
 			files.append(os.path.join(abs_dir(d), f))
 	for f in files:
-		dcm2jpg_conv(f, output_destination)
+		dxaconv_single(f, output_destination)
 		
 # take dcm file and convert most useful metadata information into a nested dictionary
 # nested dict includes information on the type of image, the 
@@ -83,6 +86,8 @@ def advanced_metadata_tools(full_path_dcm):
 	# Image Info
 	exam_type = ds.StudyDescription
 	img_type = ds.SeriesDescription
+	
+	# dictionary of image info
 	img_dict = {"Exam_Type": exam_type, "Image_Type": img_type}
 	
 	# Patient Info
@@ -96,6 +101,7 @@ def advanced_metadata_tools(full_path_dcm):
 	acquisition = ds.AcquisitionDate
 	ethnicity = ds.EthnicGroup
 	
+	# dictionary of patient info
 	patient_dict = {'Patient_Age': age, 'Patient_Protocol': protocol, 'Patient_Sex': sex, 'Ethnic_Group': ethnicity, 'Patient_Orientation': orientation, 'Patient_Size': size, 'Patient_Weight': weight, 'PatientID': ID, 'Acquisition_Date': acquisition}
 	
 	# Pixel Info
@@ -106,6 +112,7 @@ def advanced_metadata_tools(full_path_dcm):
 	columns = ds.Columns
 	phot = ds.PhotometricInterpretation
 	
+	# dictionary of pixel info
 	pixel_dict = {'Samples_per_Pixel': samp, 'Pixel_Rows': rows, 'Pixel_Columns': columns, 'Photomeric_Interpretation': phot, 'Pixel_Representation': represent}
 	
 	# Bit Info
@@ -113,6 +120,7 @@ def advanced_metadata_tools(full_path_dcm):
 	stored = ds.BitsStored
 	highbit = ds.HighBit
 	
+	# dictionary of bit info
 	bit_dict = {'Bits_Allocated': allocated, 'Bits_Stored': stored, 'High_Bit': highbit}
 	
 	# Nested Dict with all Information
