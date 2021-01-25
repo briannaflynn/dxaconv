@@ -36,7 +36,7 @@ def get_anatomy_extension(bodypart:str=None):
 
 ## Organize the dicom files by the part of the body imaged
 
-def organize_by_anatomy(dir_path:str, bodypart:str):
+def organize_by_anatomy(dir_path:str, bodypart:str, extension:str):
 	
 	file_list = ext_only(dir_path, extension) ## get extension from get_anatomy_extension function
 	txtName = bodypart + ".txt"
