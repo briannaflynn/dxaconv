@@ -46,5 +46,27 @@ def organize_by_anatomy(dir_path:str, bodypart:str, extension:str):
 	return file_list
 			
 	## fill a text file with the names of the files organized by anatomy
-			
-			
+
+## returns a list from text file, can also use file_list as returned directly by organize_by_anatomy
+def get_file(txt):
+
+    text_file = open(txt).read().splitlines()
+    
+    return text_file #this is a list of files from a text file input
+
+## input can be from the get_file function, or from organize_by_anatomy function (both produce lists)
+## source directory = where are the files coming from
+## destination directory = where are the files going
+
+## input full paths for best results
+def copier(file_list, source_dir, dest_dir):
+    count = 0
+    for f in file_list:
+        source_path = source_dir + f
+        dest_path = dest_dir + f
+        copyfile(source_path, dest_path)
+
+        count += 1
+
+        print('file ' + str(f) + ' copied successfully: ' + str(count))
+
