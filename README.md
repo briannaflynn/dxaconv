@@ -10,4 +10,9 @@ This code builds upon the pydicom library and OpenCV libraries. Please refer [he
 ![](img/readme_example.jpg)
 
 Example: 
-`dcm_preview('path/to/your.dcm')`
+```Python
+from dxaconv import dcm_preview
+
+dcm_preview('path/to/your.dcm')
+
+```
