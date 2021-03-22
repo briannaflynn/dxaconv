@@ -1,7 +1,7 @@
 #!/usr/bin/python
 
 # before you run, pip install pydicom, pip install pillow # optional
-
+import sys
 import pydicom as dicom
 import PIL # optional
 import pandas as pd
@@ -12,8 +12,9 @@ import cv2
 import csv
 from pathlib import Path  
 
-from dxaconv import *
-
+## returns a list of files that have the .dcm extension
+def ext_only(directory, extension='dcm'):
+	return([f for f in listdir(directory) if f.endswith('.' + extension)])
 
 src_directory = './exampleDicoms' # source of .dcm files
 output_directory = '.' # where to output the converted files
@@ -36,10 +37,12 @@ def get_anatomy_extension(bodypart:str=None):
 
 ## Organize the dicom files by the part of the body imaged
 
-def organize_by_anatomy(dir_path:str, bodypart:str, extension:str):
+def organize_by_anatomy(dir_path:str, bodypart:str):
 	
+	extension = get_anatomy_extension(bodypart)
 	file_list = ext_only(dir_path, extension) ## get extension from get_anatomy_extension function
 	txtName = bodypart + ".txt"
+	
 	with open(txtName, 'w') as f:
 		for item in file_list:
 			f.write("%s\n" % item)
@@ -70,3 +73,4 @@ def copier(file_list, source_dir, dest_dir):
 
         print('file ' + str(f) + ' copied successfully: ' + str(count))
 
+organize_by_anatomy(sys.argv[1], sys.argv[2])
