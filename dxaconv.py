@@ -2,6 +2,7 @@
 
 # before you run, pip install pydicom, pip install pillow # optional
 
+import sys
 import pydicom as dicom
 import PIL # optional
 import pandas as pd
@@ -127,3 +128,5 @@ def advanced_metadata_tools(full_path_dcm):
 	dicom_super = {'Image':img_dict, 'Patient':patient_dict, 'Pixel':pixel_dict, 'Bit':bit_dict}
 	
 	return dicom_super
+	
+dxaconv_dir(sys.argv[1], sys.argv[2])
