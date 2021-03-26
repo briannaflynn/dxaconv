@@ -15,16 +15,20 @@ This code builds upon the pydicom library and OpenCV libraries. Please refer [he
 ```
 # while in a directory that contains all dicom images, use this command to convert them to JPGs in a new directory
 
-python /path/to/file/dxaconv.py dicom_directory jpg_directory
+python dxaconv.py dicom_directory jpg_directory
 
 ```
 #### Organize by files of a particular anatomy 
 
 ```
-# while in a directory containing dicom images, run this
+# specify the path to a directory with dicom images, and the anatomy to filter by
  
-python /path/to/file/organizer.py spine
+python organizer.py dicom_directory spine
 
-# it will output a text file containing all files associated with that body part
+# it will output a text file containing all filenames for images of the spine
 
+```
+#### Anatomy arguments for organizer.py
+```
+hip1, hip2, knee1, knee2, spine, thoracic, full_body_opaque, full_body_transparent
 ```
