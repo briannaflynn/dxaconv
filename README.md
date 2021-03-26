@@ -9,10 +9,22 @@ This code builds upon the pydicom library and OpenCV libraries. Please refer [he
 
 ![](img/readme_example.jpg)
 
-Example: 
-```Python
-from dxaconv import dcm_preview
+# Command line exaamples
 
-dcm_preview('path/to/your.dcm')
+#### Convert DICOM files to JPG format
+```
+# while in a directory that contains all dicom images, use this command to convert them to JPGs in a new directory
+
+python /path/to/file/dxaconv.py dicom_directory jpg_directory
+
+```
+#### Organize by files of a particular anatomy 
+
+```
+# while in a directory containing dicom images, run this
+ 
+python /path/to/file/organizer.py spine
+
+# it will output a text file containing all files associated with that body part
 
 ```
