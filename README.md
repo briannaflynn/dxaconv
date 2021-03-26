@@ -9,7 +9,7 @@ This code builds upon the pydicom library and OpenCV libraries. Please refer [he
 
 ![](img/readme_example.jpg)
 
-# Command line exaamples
+# Command line examples
 
 #### Convert DICOM files to JPG format
 ```
