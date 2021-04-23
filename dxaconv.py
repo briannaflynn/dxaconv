@@ -62,6 +62,7 @@ def dxaconv_single(dcm_file:str, output_destination):
 
 def dxaconv_dir(dcm_folder_path, img_output_path, img_type='.jpg'):
 	images_path = os.listdir(dcm_folder_path)
+	#images_path = ext_only(dcm_folder_path) # uncomment this if you want to make sure you're only listing DICOM files from a directory
 	for n, image in enumerate(images_path):
 		ds = dicom.dcmread(os.path.join(dcm_folder_path, image))
 		pixel_array_numpy = ds.pixel_array
@@ -129,4 +130,4 @@ def advanced_metadata_tools(full_path_dcm):
 	
 	return dicom_super
 	
-dxaconv_dir(sys.argv[1], sys.argv[2])
+#dxaconv_dir(sys.argv[1], sys.argv[2])
