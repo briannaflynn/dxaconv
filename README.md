@@ -5,7 +5,7 @@ Originally intended for DXA scans, but can also be used on any other DICOM forma
 
 Convert .dcm files to .jpg (or .png), preview images via matplotlib, and convert each file's corresponding metadata to a .txt file. Organize the output by anatomy (built in extensions compatible with dicom files from the United Kingdom National Health Service). Example dicom files used in this repo can be found [here](https://biobank.ctsu.ox.ac.uk/crystal/field.cgi?id=20158) as "eg_20158_dxa.zip".
 
-This code builds upon the pydicom library and OpenCV libraries. Please refer [here](https://pydicom.github.io/pydicom/0.9/pydicom_user_guide.html) and [here](https://docs.opencv.org/master/d0/de3/tutorial_py_intro.html) for additional information on dependencies, the pydicom and OpenCV documentation.
+This code builds upon the pydicom library and OpenCV libraries. Please refer [here](https://pydicom.github.io/pydicom/0.9/pydicom_user_guide.html) and [here](https://docs.opencv.org/master/d0/de3/tutorial_py_intro.html) for additional information on dependencies, the pydicom and opencv documentation.
 
 ![](img/readme_example.jpg)
 
@@ -17,7 +17,7 @@ This code builds upon the pydicom library and OpenCV libraries. Please refer [he
 
 python dxaconv.py dicom_directory jpg_directory
 ```
-If one of the files could not be converted for some reason, the following message will be displayed:
+If one of the files could not be converted for some reason, the following message will be displayed 'An exception occurred and a dcm file of this directory did not successfully convert:' preceding the error message.
 
 #### Organize by files of a particular anatomy 
 
