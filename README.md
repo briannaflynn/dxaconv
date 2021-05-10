@@ -16,8 +16,9 @@ This code builds upon the pydicom library and OpenCV libraries. Please refer [he
 # while in a directory that contains all dicom images, use this command to convert them to JPGs in a new directory
 
 python dxaconv.py dicom_directory jpg_directory
-
 ```
+If one of the files could not be converted for some reason, the following message will be displayed:
+
 #### Organize by files of a particular anatomy 
 
 ```
