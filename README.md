@@ -33,3 +33,6 @@ python organizer.py dicom_directory spine
 ```
 hip1, hip2, knee1, knee2, spine, thoracic, full_body_opaque, full_body_transparent
 ```
+TODO 
+
+- Add DICOM to NIFTI conversion tool
