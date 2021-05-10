@@ -12,6 +12,7 @@ from os import listdir
 import cv2
 import csv
 from pathlib import Path  
+import sys
 
 ## returns a list of files that have the .dcm extension
 def ext_only(directory, extension='dcm'):
@@ -129,5 +130,8 @@ def advanced_metadata_tools(full_path_dcm):
 	dicom_super = {'Image':img_dict, 'Patient':patient_dict, 'Pixel':pixel_dict, 'Bit':bit_dict}
 	
 	return dicom_super
-	
-#dxaconv_dir(sys.argv[1], sys.argv[2])
+
+try:
+    dxaconv_dir(sys.argv[1], sys.argv[2])
+except BaseException as error:
+    print('An exception occurred and a dcm file of this directory did not successfully convert: {}'.format(error))
