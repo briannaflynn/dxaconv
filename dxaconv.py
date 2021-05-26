@@ -12,7 +12,6 @@ from os import listdir
 import cv2
 import csv
 from pathlib import Path  
-import sys
 
 ## returns a list of files that have the .dcm extension
 def ext_only(directory, extension='dcm'):
