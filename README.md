@@ -7,8 +7,6 @@ Convert .dcm files to .jpg (or .png), preview images via matplotlib, and convert
 
 This code builds upon the pydicom library and OpenCV libraries. Please refer [here](https://pydicom.github.io/pydicom/0.9/pydicom_user_guide.html) and [here](https://docs.opencv.org/master/d0/de3/tutorial_py_intro.html) for additional information on dependencies, the pydicom and opencv documentation.
 
-![](img/readme_example.jpg)
-
 # Command line examples
 
 #### Convert DICOM files to JPG format
